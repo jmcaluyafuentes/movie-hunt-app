@@ -21,20 +21,22 @@ const HomePage = () => {
         <input
           type="text"
           placeholder="Search movies ..."
-          className="seach-input"
+          className="search-input"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button
-          type="submit"
-          className="search-button"
-        >
+        <button type="submit" className="search-button">
           Search
         </button>
       </form>
-      {movies.map((movie) => (
-        <MovieCard movie={movie} key={movie.id} />
-      ))}
+
+      <div className="movies-grid">
+        {movies.map((movie) => 
+          movie.title.toLowerCase().startsWith(searchQuery) && (
+            <MovieCard movie={movie} key={movie.id} />
+          )
+        )}
+      </div>
     </div>
   );
 };
