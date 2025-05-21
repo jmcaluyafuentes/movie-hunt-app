@@ -1,4 +1,5 @@
 import React from 'react'
+import '../css/FavoritesPage.css'
 
 const Favorites = () => {
   return (

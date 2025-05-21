@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import '../css/HomePage.css'
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
