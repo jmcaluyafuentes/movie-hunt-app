@@ -32,7 +32,7 @@ const HomePage = () => {
 
       <div className="movies-grid">
         {movies.map((movie) => 
-          movie.title.toLowerCase().startsWith(searchQuery) && (
+          movie.title.toLowerCase().includes(searchQuery) && (
             <MovieCard movie={movie} key={movie.id} />
           )
         )}
