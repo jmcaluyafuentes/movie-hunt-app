@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getPopularMovies, searchMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import '../css/HomePage.css'
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const movies = [
-    { id: 1, title: "Avengers", release_date: "2021" },
-    { id: 2, title: "Superman", release_date: "2018" },
-    { id: 3, title: "Batman", release_date: "2015" },
-    { id: 4, title: "Green Lantern", release_date: "2023" },
-  ];
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+      } catch (err) {
+        console.log(err);
+        setError("Failed to load movies ...");
+      }
+      finally {
+        setLoading(false);
+      }
+    }
+
+    loadPopularMovies();
+  }, [])
 
   const handleSearch = (e) => {
     e.preventDefault();
