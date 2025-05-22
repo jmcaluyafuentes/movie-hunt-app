@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getPopularMovies, searchMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
-import '../css/HomePage.css'
+import "../css/HomePage.css";
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,14 +17,13 @@ const HomePage = () => {
       } catch (err) {
         console.log(err);
         setError("Failed to load movies ...");
-      }
-      finally {
+      } finally {
         setLoading(false);
       }
-    }
+    };
 
     loadPopularMovies();
-  }, [])
+  }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -46,13 +45,20 @@ const HomePage = () => {
         </button>
       </form>
 
-      <div className="movies-grid">
-        {movies.map((movie) => 
-          movie.title.toLowerCase().includes(searchQuery) && (
-            <MovieCard movie={movie} key={movie.id} />
-          )
-        )}
-      </div>
+      {error && <div className="error-message">{error}</div>}
+
+      {loading ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <div className="movies-grid">
+          {movies.map(
+            (movie) =>
+              movie.title.toLowerCase().includes(searchQuery) && (
+                <MovieCard movie={movie} key={movie.id} />
+              )
+          )}
+        </div>
+      )}
     </div>
   );
 };
