@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getPopularMovies, searchMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import "../css/HomePage.css";

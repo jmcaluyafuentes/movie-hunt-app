@@ -1,7 +1,23 @@
-import React from 'react'
 import '../css/FavoritesPage.css'
+import useFavoriteMovie from '../stores/favoriteMovieStore';
+import MovieCard from '../components/MovieCard';
 
 const Favorites = () => {
+  const favoriteMovies = useFavoriteMovie((state) => state.favoriteMovies);
+
+  if (favoriteMovies.length > 0) {
+    return (
+      <div className="favorites">
+        <h2>Your Favorite Movies</h2>
+        <div className="movies-grid">
+          {favoriteMovies?.map(movie => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="favorites-empty">
       <h2>No Favorite Movies Yet</h2>

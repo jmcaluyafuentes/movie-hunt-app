@@ -1,5 +1,5 @@
-const API_TOKEN="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMmZjMDI5OGRjM2UzZWEyMzgwODQ4YTNhYTRkNDAzYSIsIm5iZiI6MTc0NzkzMDA5Ny4wNjgsInN1YiI6IjY4MmY0YmYxMDhiOGYzOWFiYzY4NDgxZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.FDKGqzPzxLH0ysuWlNB4Sq8_isb55ZYActLK8GjwGcM"
-const BASE_URL="https://api.themoviedb.org/3"
+const API_TOKEN = import.meta.env.VITE_APP_API_TOKEN;
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export const getPopularMovies = async () => {
   const response = await fetch(`${BASE_URL}/movie/popular`, {
