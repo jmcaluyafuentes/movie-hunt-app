@@ -64,7 +64,7 @@ const HomePage = () => {
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
-        <div className="movies-grid">
+        <div className={`movies-grid ${movies.length === 1 ? "adjust-width" : ""}`}>
           {movies.map(
             (movie) =>
               movie.title.toLowerCase().includes(searchQuery) && (

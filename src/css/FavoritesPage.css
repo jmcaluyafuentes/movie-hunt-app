@@ -24,11 +24,10 @@
 .favorites-empty h2 {
   margin-bottom: 1rem;
   font-size: 2rem;
-  color: #e50914;
 }
 
 .favorites-empty p {
-  color: #999;
+  color: #c3c3c3;
   font-size: 1.2rem;
   line-height: 1.6;
 }
@@ -48,4 +47,9 @@
 
 .movies-grid > * {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+.movies-grid.adjust-width {
+  max-width: 400px;
+  margin: 0 auto;
 }

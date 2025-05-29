@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #000000;
+  background-color: #171616;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -25,7 +25,7 @@
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(10, 255, 230);
 }
 
 @media (max-width: 768px) {
