@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { getPopularMovies, searchMovies } from "../services/api";
 import MovieCard from "../components/MovieCard";
 import "../css/HomePage.css";
@@ -9,9 +10,9 @@ const HomePage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [numberOfMovies, setNumberOfMovies] = useState(0);
+  const location = useLocation();
 
-  useEffect(() => {
-    const loadPopularMovies = async () => {
+  const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
         setMovies(popularMovies);
@@ -23,8 +24,15 @@ const HomePage = () => {
       }
     };
 
+  useEffect(() => {
+    setSearchQuery("");
+    setLoading(true);
     loadPopularMovies();
-  }, []);
+    
+    if (location.pathname === '/') {
+      loadPopularMovies();
+    }
+  }, [location.key]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -46,12 +54,13 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (searchQuery) {
-      const lowerSearchQuery = searchQuery.toLowerCase();
-      const countMovies = movies.filter(movie => movie.title.toLowerCase().includes(lowerSearchQuery)).length;
-      setNumberOfMovies(countMovies);
+    if (!searchQuery) {
+      loadPopularMovies();
     }
-  }, [searchQuery]);
+    const lowerSearchQuery = searchQuery.toLowerCase();
+    const countMovies = movies.filter(movie => movie.title.toLowerCase().includes(lowerSearchQuery)).length;
+    setNumberOfMovies(countMovies);
+  }, [searchQuery, movies]);
 
   return (
     <div className="home-page">
