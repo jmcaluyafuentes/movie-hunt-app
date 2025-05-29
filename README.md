@@ -7,6 +7,7 @@ A simple React app that displays a list of movies and allows users to search by 
 - View a list of predefined movies
 - Search movies by title
 - Conditional rendering of movie cards based on the search input
+- Manage global state for favorite movies
 
 ## 🛠️ Built With
 
@@ -15,6 +16,7 @@ A simple React app that displays a list of movies and allows users to search by 
 - [Vite](https://vitejs.dev/)
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Zustand](https://zustand-demo.pmnd.rs/) – For managing global states (e.g., favorite movies)
 
 ## 💡 Getting Started
 

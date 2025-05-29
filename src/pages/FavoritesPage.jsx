@@ -10,7 +10,7 @@ const Favorites = () => {
       <div className="favorites">
         <h2>Your Favorite Movies</h2>
         <div className={`movies-grid ${favoriteMovies.length === 1 ? "adjust-width" : ""}`}>
-          {favoriteMovies?.map(movie => (
+          {favoriteMovies.map(movie => (
             <MovieCard movie={movie} key={movie.id} />
           ))}
         </div>
