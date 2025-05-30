@@ -1,6 +1,6 @@
-import '../css/FavoritesPage.css'
 import useFavoriteMovie from '../stores/favoriteMovieStore';
 import MovieCard from '../components/MovieCard';
+import '../css/FavoritesPage.css'
 
 const Favorites = () => {
   const favoriteMovies = useFavoriteMovie((state) => state.favoriteMovies);

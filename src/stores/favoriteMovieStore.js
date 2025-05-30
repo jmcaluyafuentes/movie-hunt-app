@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useFavoriteMovie = create((set) => ({
-  favoriteMovies: [],
+  favoriteMovies: JSON.parse(localStorage.getItem("localFavMovies")) || [],
   
   addFavoriteMovie: (movie) =>
     set((state) => ({ favoriteMovies: [...state.favoriteMovies, movie] })),
