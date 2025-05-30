@@ -8,6 +8,7 @@ A simple React app that displays a list of movies and allows users to search by 
 - Search movies by title
 - Conditional rendering of movie cards based on the search input
 - Manage global state for favorite movies
+- Persist favorite movies in local storage
 
 ## 🛠️ Built With
 
@@ -17,6 +18,10 @@ A simple React app that displays a list of movies and allows users to search by 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Zustand](https://zustand-demo.pmnd.rs/) – For managing global states (e.g., favorite movies)
+
+## 🧠 State Management
+
+Favorite movies are stored in a global state using Zustand. The list is automatically synced with local storage to ensure persistence across browser sessions.
 
 ## 💡 Getting Started
 

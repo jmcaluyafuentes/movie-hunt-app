@@ -9,7 +9,7 @@ const SyncFavoritesToLocalStorage = () => {
   },[favoriteMovies]);
 
   return (
-    <div>null</div>
+    null
   )
 }
 
