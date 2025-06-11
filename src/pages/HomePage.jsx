@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { getPopularMovies, searchMovies } from "../services/api";
-import MovieCard from "../components/MovieCard";
+import MoviesGrid from "../components/MoviesGrid";
 import "../css/HomePage.css";
 
 const HomePage = () => {
@@ -13,16 +13,16 @@ const HomePage = () => {
   const location = useLocation();
 
   const loadPopularMovies = async () => {
-      try {
-        const popularMovies = await getPopularMovies();
-        setMovies(popularMovies);
-      } catch (err) {
-        console.log(err);
-        setError("Failed to load movies...");
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      const popularMovies = await getPopularMovies();
+      setMovies(popularMovies);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to load movies...");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     setSearchQuery("");
@@ -82,16 +82,11 @@ const HomePage = () => {
       {loading ? (
         <div className="loading">Loading...</div>
       ) : (
-        <div
-          className={`movies-grid ${numberOfMovies === 1 ? "adjust-width" : ""}`}
-        >
-          {movies.map(
-            (movie) =>
-              movie.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
-                <MovieCard movie={movie} key={movie.id} />
-              )
-          )}
-        </div>
+        numberOfMovies === 0 ? (
+          <p>{`There are no movies with title containing "${searchQuery}".`}</p>
+        ) : (
+          <MoviesGrid movies={movies} numberOfMovies={numberOfMovies} searchQuery={searchQuery}/>
+        )
       )}
     </div>
   );
